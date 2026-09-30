@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tavern & Dungeons</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script type="module" crossorigin src="./assets/index-EYc3bA26.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BrQMcJat.css">
+</head>
+<body>
+<div id="app">
+
+  <header>
+    <h1>🥤 Tavern &amp; Dungeons</h1>
+    <div class="stat-pill" title="Ouro"><b><span class="lbl">OURO</span><span class="ico">💰</span></b> <span id="goldDisplay">0</span></div>
+    <div class="stat-pill" title="Andar"><b><span class="lbl">ANDAR</span><span class="ico">🏰</span></b> <span id="floorDisplay">1</span></div>
+    <div class="stat-pill" title="Essência"><b><span class="lbl">ESSÊNCIA</span></b> <span id="essenceDisplay">0</span> ✨</div>
+    <div class="spacer"></div>
+    <button class="btn" id="speedBtn" title="Alternar velocidade do jogo">1x</button>
+    <button class="btn" id="shareBtn" title="Compartilhar seu grupo e recorde" aria-label="Compartilhar">📤<span class="lbl"> Compartilhar</span></button>
+    <button class="btn" id="muteBtn" aria-label="Alternar som" title="Alternar som">🔊</button>
+    <button class="btn" id="settingsBtn" title="Ajustes: tamanho do texto, som, idioma e mais" aria-label="Ajustes">⚙️<span class="lbl"> Ajustes</span></button>
+  </header>
+
+  <main class="layout">
+    <section class="panel dungeon-hero" aria-label="Masmorra">
+      <div id="expeditionPrep">
+        <div class="tavern-scene" id="tavernScene">
+          <div class="ts-top"><div id="restBanner"></div></div>
+          <div class="ts-stonewall" aria-hidden="true"></div>
+          <div class="ts-post p1" aria-hidden="true"></div><div class="ts-post p2" aria-hidden="true"></div>
+          <div class="ts-deco ts-sconce s1"></div><div class="ts-deco ts-sconce s2"></div>
+          <div class="ts-deco ts-ivy i1"></div><div class="ts-deco ts-ivy i2"></div><div class="ts-deco ts-ivy i3"></div>
+          <div class="ts-deco ts-mugs" id="tsMugs"></div>
+          <div class="ts-deco ts-barrel b1"></div><div class="ts-deco ts-barrel b2"></div>
+          <div class="ts-growth" id="tsGrowth" aria-hidden="true"></div>
+          <div class="ts-deco ts-window" id="tsWindow"></div>
+          <div class="ts-deco ts-lantern l1"></div><div class="ts-deco ts-lantern l2"></div>
+          <div class="ts-deco ts-shelf" id="tsShelf"></div>
+          <div class="ts-deco ts-fire" id="tsFire"></div>
+          <button class="ts-obj ts-board" id="tsBoard" data-action="stats-open" title="Quadro: estatísticas e conquistas"><span class="ts-art"></span><span class="ts-label">Conquistas</span></button>
+          <div class="prep-title ts-sign">🍺 Monte seu grupo antes de descer</div>
+          <div class="ts-label ts-recruits-label">Aventureiros</div>
+          <div class="ts-recruits" id="tsRecruits"></div>
+          <button class="ts-bar" data-action="shop-open" title="Taberneiro: loja">
+            <span class="ts-merchant" id="tsMerchant"></span><span class="ts-counter" id="tsCounter"></span>
+            <span class="ts-stone" id="tsStone" hidden></span><span class="ts-bubble" id="tsShopBubble" hidden>💎</span>
+            <span class="ts-wares" id="tsWares"></span>
+            <span class="ts-label ts-bar-label">Loja do Taberneiro</span>
+          </button>
+          <button class="ts-obj ts-gift" id="dailyTagPrep" data-action="daily-open" title="Recompensa diária" hidden></button>
+          <div class="ts-bench" id="tsBench"><div class="ts-deco ts-sleeper" id="tsSleeper"><span class="ts-zz" aria-hidden="true"></span></div><div class="ts-bench-heroes" id="tsBenchHeroes"></div><div class="ts-table" id="tsTable"></div><div class="ts-deco ts-candle c3"></div></div>
+          <div class="ts-deco ts-embers"><i></i><i></i><i></i><i></i></div>
+          <div class="ts-deco ts-candle c1"></div><div class="ts-deco ts-candle c2"></div>
+          <div class="ts-deco ts-cat" id="tsCat"></div>
+          <button class="ts-say" id="tsSay" data-action="shop-open" hidden></button>
+          <button class="ts-obj ts-chest" id="tsChest" data-action="bag-open" title="Baú: bolsa e equipamentos"><span class="ts-art"></span><span class="ts-count" id="tsChestCount" hidden></span><span class="ts-label" id="tsChestLabel">Inventário</span></button>
+          <button class="ts-obj ts-altar" id="tsAltar" data-action="prestige-open" title="Altar do prestígio" hidden><span class="ts-art"></span><span class="ts-label">✨ <span class="ll">Prestígio</span></span></button>
+          <button class="ts-obj ts-portal" id="startExpeditionBtn" data-action="start-expedition" title="Portal da masmorra: descer">
+            <span class="ts-art" id="tsPortalArt"></span><span class="ts-label ts-cta" id="tsPortalLabel">Descer</span>
+            <span class="ts-card" id="tsPortalCard"></span>
+          </button>
+          <div class="ts-deco ts-stool st1"></div><div class="ts-deco ts-stool st2"></div>
+          <div class="ts-light" aria-hidden="true"></div><div class="ts-vignette" aria-hidden="true"></div>
+          <div class="ts-party-wrap">
+            <div class="ts-plaque">👥 Seu grupo <span id="tsPartyCount"></span></div>
+            <div class="ts-party" id="prepPartyMini"></div>
+          </div>
+        </div>
+      </div>
+      <div id="expeditionRun" style="display:none;">
+        <div class="vs-row arena">
+          <div class="arena-deco arena-torch t1" aria-hidden="true"></div><div class="arena-deco arena-torch t2" aria-hidden="true"></div>
+          <div class="arena-hud">
+            <div class="hud-title"><span class="floor-tag" id="floorTag">Andar 1</span><span class="wave-tag" id="waveTag">Onda 1/5</span></div>
+            <div class="wave-dots" id="waveDots" aria-hidden="true"></div>
+            <div class="goal-tag" id="goalTag"></div>
+            <div class="set-bonus-tag" id="setBonusTag" style="display:none;"></div>
+          </div>
+          <div class="arena-chips">
+            <button class="bag-tag" id="bagTag" data-action="bag-open" hidden></button>
+            <span class="bag-tag stone-tag" id="stoneTag" title="Pedra da Ressurreição: se o grupo todo cair, todos voltam" hidden>💎</span>
+            <button class="bag-tag daily-tag" id="dailyTag" data-action="daily-open" hidden></button>
+            <button class="ad-offer" id="adOffer" data-action="ad-gold" hidden></button>
+          </div>
+          <div class="arena-notices"><div class="retreat-notice" id="retreatNotice" hidden></div><div id="wipeBanner"></div></div>
+          <div class="vs-side party-side formation" id="battlePartyMini"></div>
+          <div class="vs-mark">VS</div>
+          <div class="vs-side enemy-side">
+            <div class="float-layer" id="floatLayer"></div>
+            <div class="enemy-avatar-wrap" id="enemyAvatarWrap"></div>
+            <div class="enemy-plate">
+              <div class="enemy-boss-tag">⚠ <span>CHEFE</span></div>
+              <div class="enemy-name" id="enemyName">—</div>
+              <div class="enemy-type" id="enemyType"></div>
+              <div class="enemy-hp-wrap">
+                <div class="hbar-track"><div class="hbar-fill enemy" id="enemyHpFill" style="width:100%"></div><div class="hbar-text" id="enemyHpText"></div></div>
+              </div>
+              <div class="enemy-stats" id="enemyStats"></div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-bar" id="skillBar"></div>
+        <div class="dungeon-foot">
+          <details class="log-details" open>
+            <summary>📜 Registro<span class="lbl"> de batalha</span></summary>
+            <div class="log" id="battleLog"></div>
+          </details>
+          <div class="foot-side">
+            <div class="last-kill" id="lastKill" hidden></div>
+            <button class="btn wide" data-action="recall-expedition">🏠<span class="lbl"> Voltar pra</span> Taverna</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</div>
+
+<div id="coach" hidden></div>
+<div id="drawer" class="drawer" hidden>
+  <div class="drawer-backdrop" data-action="drawer-close"></div>
+  <aside class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+    <div class="drawer-head">
+      <div class="drawer-art" id="drawerArt" hidden></div>
+      <div class="drawer-titles"><h2 id="drawerTitle"></h2><div class="drawer-sub" id="drawerSub"></div></div>
+      <button class="drawer-x" data-action="drawer-close" aria-label="Fechar">✕</button>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </aside>
+</div>
+<div id="modalRoot"></div>
+</body>
+</html>
